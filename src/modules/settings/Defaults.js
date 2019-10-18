@@ -1,6 +1,13 @@
 import Utils from '../../utils/Utils'
 import DateTime from '../../utils/DateTime'
 
+const formatter = new Intl.NumberFormat('nl-NL', {
+  style: 'currency',
+  currency: 'EUR',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 4
+})
+
 /**
  * ApexCharts Default Class for setting default options for all chart types.
  *
@@ -160,16 +167,16 @@ export default class Defaults {
           return (
             '<div class="apexcharts-tooltip-candlestick">' +
             '<div>Open: <span class="value">' +
-            o +
+            formatter.format(o) +
             '</span></div>' +
             '<div>High: <span class="value">' +
-            h +
+            formatter.format(h) +
             '</span></div>' +
             '<div>Low: <span class="value">' +
-            l +
+            formatter.format(l) +
             '</span></div>' +
             '<div>Close: <span class="value">' +
-            c +
+            formatter.format(c) +
             '</span></div>' +
             '</div>'
           )

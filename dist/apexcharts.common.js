@@ -3570,6 +3570,12 @@ function () {
   return DateTime;
 }();
 
+var formatter = new Intl.NumberFormat('nl-NL', {
+  style: 'currency',
+  currency: 'EUR',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 4
+});
 /**
  * ApexCharts Default Class for setting default options for all chart types.
  *
@@ -3736,7 +3742,7 @@ function () {
             var h = w.globals.seriesCandleH[seriesIndex][dataPointIndex];
             var l = w.globals.seriesCandleL[seriesIndex][dataPointIndex];
             var c = w.globals.seriesCandleC[seriesIndex][dataPointIndex];
-            return '<div class="apexcharts-tooltip-candlestick">' + '<div>Open: <span class="value">' + o + '</span></div>' + '<div>High: <span class="value">' + h + '</span></div>' + '<div>Low: <span class="value">' + l + '</span></div>' + '<div>Close: <span class="value">' + c + '</span></div>' + '</div>';
+            return '<div class="apexcharts-tooltip-candlestick">' + '<div>Open: <span class="value">' + formatter.format(o) + '</span></div>' + '<div>High: <span class="value">' + formatter.format(h) + '</span></div>' + '<div>Low: <span class="value">' + formatter.format(l) + '</span></div>' + '<div>Close: <span class="value">' + formatter.format(c) + '</span></div>' + '</div>';
           }
         },
         states: {
